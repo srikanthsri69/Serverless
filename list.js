@@ -10,7 +10,7 @@ KeyConditionExpression: "userid = :userid",
 // 'ExpressionAttributeValues' defines the value in the condition
 // - ':userId': defines 'userId' to be the id of the author
 ExpressionAttributeValues: {
-":userid": "123", }, };
+":userid": event.requestContext.identity.cognitoIdentityId, }, };
 const result = await dynamoDb.query(params);
 // Return the matching list of items in response body
 return result.Items;
